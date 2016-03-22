@@ -39,6 +39,7 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.ViewHolder> {
         AppInfo appInfo = infoList.get(position);
         holder.appName.setText(appInfo.getName());
         holder.appIcon.setImageDrawable(appInfo.getIcon());
+        holder.installTime.setText(appInfo.getInstallTime());
     }
 
     @Override
@@ -52,6 +53,8 @@ public class AppAdapter extends RecyclerView.Adapter<AppAdapter.ViewHolder> {
         ImageView appIcon;
         @Bind(R.id.app_name)
         TextView appName;
+        @Bind(R.id.install_time)
+        TextView installTime;
 
         public ViewHolder(View itemView) {
             super(itemView);

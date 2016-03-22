@@ -10,7 +10,11 @@ public class AppInfo {
 
     private String name;
 
-    private long installTime;
+    private String installTime;
+
+    private int versionCode;
+
+    private String versionName;
 
     private Drawable icon;
 
@@ -22,12 +26,28 @@ public class AppInfo {
         this.name = name;
     }
 
-    public long getInstallTime() {
+    public String getInstallTime() {
         return installTime;
     }
 
-    public void setInstallTime(long installTime) {
+    public void setInstallTime(String installTime) {
         this.installTime = installTime;
+    }
+
+    public int getVersionCode() {
+        return versionCode;
+    }
+
+    public void setVersionCode(int versionCode) {
+        this.versionCode = versionCode;
+    }
+
+    public String getVersionName() {
+        return versionName;
+    }
+
+    public void setVersionName(String versionName) {
+        this.versionName = versionName;
     }
 
     public Drawable getIcon() {
@@ -42,7 +62,9 @@ public class AppInfo {
     public String toString() {
         return "AppInfo{" +
                 "name='" + name + '\'' +
-                ", installTime=" + installTime +
+                ", installTime='" + installTime + '\'' +
+                ", versionCode='" + versionCode + '\'' +
+                ", versionName='" + versionName + '\'' +
                 ", icon=" + icon +
                 '}';
     }
