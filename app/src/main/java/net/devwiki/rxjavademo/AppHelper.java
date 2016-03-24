@@ -33,13 +33,14 @@ public class AppHelper {
     }
 
     public Observable<List<AppInfo>> getListByRxJava(final Context context){
-        Observable<List<AppInfo>> observer = Observable.create(new Observable.OnSubscribe<List<AppInfo>>() {
-            @Override
-            public void call(Subscriber<? super List<AppInfo>> subscriber) {
-                List<AppInfo> infoList = AppUtil.getAppList(context);
-                subscriber.onNext(infoList);
-                subscriber.onCompleted();
-            }
+        Observable<List<AppInfo>> observer = Observable.create(
+                new Observable.OnSubscribe<List<AppInfo>>() {
+                    @Override
+                    public void call(Subscriber<? super List<AppInfo>> subscriber) {
+                        List<AppInfo> infoList = AppUtil.getAppList(context);
+                        subscriber.onNext(infoList);
+                        subscriber.onCompleted();
+                    }
         });
         return observer;
     }

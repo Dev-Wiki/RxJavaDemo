@@ -1,6 +1,8 @@
 package net.devwiki.rxjavademo;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -86,9 +88,20 @@ public class MainActivity extends AppCompatActivity {
         refreshLayout.setRefreshing(true);
         infoList.clear();
         appAdapter.notifyDataSetChanged();
-        infoList.addAll(AppHelper.getHelper().getListByNormal(this));
-        appAdapter.notifyDataSetChanged();
-        refreshLayout.setRefreshing(false);
+        new AsyncTask<Void, Void, List<AppInfo>>(){
+
+            @Override
+            protected List<AppInfo> doInBackground(Void... params) {
+                return AppHelper.getHelper().getListByNormal(MainActivity.this);
+            }
+
+            @Override
+            protected void onPostExecute(List<AppInfo> appInfos) {
+                infoList.addAll(appInfos);
+                appAdapter.notifyDataSetChanged();
+                refreshLayout.setRefreshing(false);
+            }
+        };
     }
 
     private void getByRxJava() {

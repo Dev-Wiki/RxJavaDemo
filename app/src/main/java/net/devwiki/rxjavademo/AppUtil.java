@@ -24,11 +24,15 @@ public class AppUtil {
      */
     public static List<AppInfo> getAppList(Context context){
         List<AppInfo> appInfoList = new ArrayList<>();
-        List<PackageInfo> packages = context.getPackageManager().getInstalledPackages(PackageManager.GET_ACTIVITIES);
+        List<PackageInfo> packages = context.getPackageManager()
+                .getInstalledPackages(PackageManager.GET_ACTIVITIES);
         for (PackageInfo packageInfo : packages) {
             AppInfo appInfo = new AppInfo();
-            appInfo.setName(packageInfo.applicationInfo.loadLabel(context.getPackageManager()).toString());
-            appInfo.setIcon(packageInfo.applicationInfo.loadIcon(context.getPackageManager()));
+            appInfo.setName(packageInfo.applicationInfo
+                    .loadLabel(context.getPackageManager())
+                    .toString());
+            appInfo.setIcon(packageInfo.applicationInfo
+                    .loadIcon(context.getPackageManager()));
             appInfo.setInstallTime(getFormatTime(packageInfo.firstInstallTime));
             appInfo.setVersionCode(packageInfo.versionCode);
             appInfo.setVersionName(packageInfo.versionName);
