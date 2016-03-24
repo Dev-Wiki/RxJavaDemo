@@ -37,7 +37,7 @@ public class AppUtil {
         return appInfoList;
     }
 
-    private static String getFormatTime(long time){
+    public static String getFormatTime(long time){
         if (time <= 0){
             return "";
         }
